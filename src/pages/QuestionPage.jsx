@@ -81,7 +81,7 @@ const QuestionPage = () => {
             Cancel
           </Link>
           <Link className="saveButton" to="/" onClick={handleSubmit}>
-            Save
+            Save Question
           </Link>
         </Col>
       </Row>
