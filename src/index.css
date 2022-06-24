@@ -1,13 +1,390 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #464646;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e72a4a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4c6a;
+}
+
+body {
+  padding: 2vh 0;
+  background-color: #111111;
+  color: #ffffff;
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.Home {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+h1 {
+  color: #ff4c6a;
+}
+
+.subtitle {
+  color: rgb(231, 231, 231);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.addButtonImage {
+  width: 4rem;
+  height: 4rem;
+  transition: all 0.25s ease;
+  filter: invert(34%) sepia(21%) saturate(4607%) hue-rotate(321deg) brightness(107%) contrast(88%);
+}
+
+.addButtonImage:hover {
+  transform: scale(1.09);
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(127deg) brightness(101%) contrast(101%);
+}
+
+@keyframes fade-in-overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0.4;
+    top: 25%;
+  }
+  to {
+    top: 35%;
+
+    opacity: 1;
+  }
+}
+
+input {
+  position: relative;
+  color: #cfcfcf;
+  text-align: center;
+  background: 0;
+  border: 0;
+  outline: none;
+  width: 100%;
+  font-size: 1.5em;
+  transition: padding 0.3s 0.2s ease;
+}
+
+.optionInput {
+  position: relative;
+  color: #cfcfcf;
+  text-align: center;
+  background: 0;
+  border: 0;
+  outline: none;
+  width: 80%;
+  font-size: 1.5em;
+  transition: padding 0.3s 0.2s ease;
+}
+
+.inputError {
+  font-size: 0.8rem;
+  color: #ff4e4e;
+  position: absolute;
+  top: 25%;
+}
+
+.optionError {
+  font-size: 0.8rem;
+  color: #ff4e4e;
+}
+
+.title {
+  width: 100%;
+}
+
+.titleError {
+  text-align: end;
+  font-size: 0.8rem;
+  color: #ff4e4e;
+}
+
+input:focus {
+  padding-bottom: 5px;
+}
+input:focus + .line:after {
+  transform: scaleX(1);
+}
+.field {
+  position: relative;
+}
+.field .line {
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: -8px;
+  background: #bdc3c7;
+}
+.field .line:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scalex(0);
+  transition: transform 0.3s ease;
+  background: #ff4c6a;
+}
+
+.cancelButton {
+  border-radius: 50px;
+  font-weight: 500;
+  padding: 0.4rem;
+  border: none;
+  outline: none;
+  background-color: #ff4cd8;
+  color: #ffffff;
+  transition: all 0.25s ease;
+  text-decoration: blink;
+}
+
+.cancelButton:hover {
+  background-color: #fc29ce;
+  cursor: pointer;
+}
+
+.newOption {
+  padding-top: 2em;
+}
+
+.optionLink {
+  color: #cfcfcf;
+}
+
+.optionLink:hover {
+  color: white;
+}
+
+.questionButton {
+  margin-left: 12em;
+  /* right: 4%; */
+}
+
+.saveButton {
+  border-radius: 50px;
+  font-weight: 500;
+  margin-left: 1em;
+  padding: 0.4rem;
+  border: none;
+  outline: none;
+  background-color: #ff4c6a;
+  color: #ffffff;
+  transition: all 0.25s ease;
+  text-decoration: blink;
+}
+
+.saveButton:hover {
+  background-color: #e72a4a;
+  cursor: pointer;
+}
+
+.QuestionList {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.toDoItem {
+  display: grid;
+  place-items: center;
+  position: relative;
+  /* padding: 2rem; */
+  width: 100%;
+  /* height: 10vh; */
+  height: 5rem;
+  background-color: #363636;
+  animation: slide-in 1s ease;
+  transition: all 0.25s ease;
+}
+
+.toDoItem:hover {
+  background-color: #464646;
+}
+
+.toDoItem a {
+  color: white;
+  text-decoration: none;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0.4;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.deleteQuestionButton {
+  z-index: 2;
+  width: 2rem;
+  position: absolute;
+  right: 4%;
+  filter: invert(100%);
+  transition: all 0.25s ease;
+}
+
+.deleteQuestionButton:hover {
+  cursor: pointer;
+  transform: scale(1.08);
+  filter: invert(34%) sepia(21%) saturate(4607%) hue-rotate(321deg) brightness(107%) contrast(88%);
+}
+
+.deleteOptionButton {
+  z-index: 2;
+  position: absolute;
+  right: 4%;
+  top: 35%;
+  filter: invert(100%);
+  transition: all 0.25s ease;
+}
+
+.deleteOptionButton:hover {
+  cursor: pointer;
+  transform: scale(1.08);
+  filter: invert(34%) sepia(21%) saturate(4607%) hue-rotate(321deg) brightness(107%) contrast(88%);
+}
+
+.questionPage {
+  margin: 0 auto;
+  max-width: 700px;
+  padding-bottom: 5rem;
+}
+
+.titleWrapper {
+  margin-top: 3rem;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e72a4a;
+}
+
+.contentWrapper {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.optionWrapper {
+  margin-top: 1rem;
+}
+
+.questionPageTitle {
+  color: #e72a4a;
+  font-size: 2.6rem;
+}
+
+@media (max-width: 730px) {
+  html {
+    font-size: 13px;
+  }
+
+  body {
+    padding: 2.5rem 1rem;
+  }
+
+  .Home h1 {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .subtitle img {
+    width: 1.7rem;
+  }
+
+  .titleWrapper {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e72a4a;
+  }
+
+  .toDoItem {
+    display: grid;
+    place-items: center;
+    position: relative;
+    /* padding: 2rem; */
+    width: 100%;
+    height: 10vh;
+    background-color: #363636;
+    animation: slide-in 1s ease;
+    transition: all 0.25s ease;
+  }
+}
+
+.fade-in-left {
+  animation: fade-in-left 0.6s ease;
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.fade-in-right {
+  animation: fade-in-right 0.6s ease;
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
