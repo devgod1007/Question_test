@@ -9,6 +9,7 @@ const QuestionPage = () => {
   const { id } = useParams();
   let questions = [];
   questions = JSON.parse(localStorage.getItem('questions'));
+  if(questions == null) questions = [];
   const [questionID, setQuestionID] = useState(0);
   const [questionTitle, setQuestionTitle] = useState("");
   const [options, setOptions] = useState(['']);
